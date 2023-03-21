@@ -26,7 +26,7 @@ jobs:
           command: |
             aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-            cd terraform-files/backend/
+            cd tf_files/backend/
             terraform init
             terraform plan
             terraform apply --auto-approve
@@ -59,7 +59,7 @@ jobs:
             export MYSQL_PSSWRD="mysql-password=${MYSQL_PASSWORD}"
             aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-            cd terraform-files/deployment/
+            cd tf_files/deployment/
             terraform init
             terraform plan -var $DOCKER_IMAGE -var $MYSQL_PSSWRD -out=plan.txt
             terraform apply plan.txt
@@ -73,7 +73,7 @@ jobs:
             export MYSQL_PSSWRD="mysql-password=${MYSQL_PASSWORD}"
             aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-            cd terraform-files/deployment/
+            cd tf_files/deployment/
             terraform init
             terraform plan -var $DOCKER_IMAGE -var $MYSQL_PSSWRD -out=plan.txt
             terraform apply plan.txt
@@ -88,7 +88,7 @@ jobs:
           command: |
             aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-            cd terraform-files/monitoring/
+            cd tf_files/monitoring/
             terraform init
             terraform plan
             terraform apply --auto-approve
@@ -121,7 +121,7 @@ jobs:
           command: |
             aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-            cd terraform-files/deployment/
+            cd tf_files/deployment/
             terraform init
             terraform destroy --auto-approve
       - run:
@@ -129,7 +129,7 @@ jobs:
           command: |
             aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-            cd terraform-files/infrastructure/
+            cd tf_files/infrastructure/
             terraform init
             terraform destroy --auto-approve
           
